@@ -8,20 +8,22 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int m = 1;
-	int i, j;
+	int i, capteur = 0;
+	unsigned long int C;
 
-	for (i = 0; i < 63; i++)
+	for (i = 63; i >= 0; i--)
 	{
-		if ((n >> i) == 0)
-			break;
-	}
+		C = n >> i;
 
-	for (j = i; j >= 0; j--)
-	{
-		if ((n >> j) & m)
+		if (C & 1)
+		{
 			_putchar('1');
-		else
+			capteur++;
+		}
+		else if (capteur)
 			_putchar('0');
 	}
+	if (!capteur)
+		_putchar('0');
 }
+
